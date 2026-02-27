@@ -42,3 +42,12 @@ class GDBProfiler(gdb.Command):
 
 # Register the command with GDB
 GDBProfiler()
+
+def report(self):
+        # ... (keep existing print logic) ...
+        
+        # New: Generate raw data for OCaml analysis
+        with open("profiler_data.txt", "w") as f:
+            for func, count in self.samples.items():
+                f.write(f"{func},{count}\n")
+        print("📁 Raw data exported to profiler_data.txt")
